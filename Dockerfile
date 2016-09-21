@@ -21,8 +21,8 @@ RUN mkdir -p /etc/letsencrypt/webrootauth
 ADD entrypoint.sh /entrypoint.sh
 ADD templates /templates
 
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD supervisord.conf /etc/supervisor/supervisord.conf
 
 EXPOSE 80 443
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord -c /etc/supervisor/supervisord.conf"]
