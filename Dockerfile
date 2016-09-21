@@ -3,7 +3,7 @@ MAINTAINER Ash Wilson <smashwilson@gmail.com>
 
 #We need to install bash to easily handle arrays
 # in the entrypoint.sh script
-RUN apk add --update bash \
+RUN apk add --update bash supervisor \
   python python-dev py-pip \
   gcc musl-dev linux-headers \
   augeas-dev openssl-dev libffi-dev ca-certificates dialog \
@@ -21,6 +21,8 @@ RUN mkdir -p /etc/letsencrypt/webrootauth
 ADD entrypoint.sh /entrypoint.sh
 ADD templates /templates
 
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 EXPOSE 80 443
 
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/usr/bin/supervisord"]

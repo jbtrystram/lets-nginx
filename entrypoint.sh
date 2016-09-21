@@ -152,5 +152,5 @@ chmod +x /etc/periodic/monthly/reissue
 /usr/sbin/crond -f -d 8 &
 
 echo Ready
-# Launch nginx in the foreground
-/usr/sbin/nginx -g "daemon off;"
+# Launch nginx in the foreground (launched by supervisord)
+#/usr/sbin/nginx -g "daemon off;"
