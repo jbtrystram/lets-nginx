@@ -137,7 +137,7 @@ echo "${DOMAIN}" > /etc/letsencrypt/san_list
     --webroot \
     -w /etc/letsencrypt/webrootauth/ \
     ${letscmd} \
-    "${SERVER}" \
+    ${SERVER} \
     --email "${EMAIL}" --agree-tos \
     --expand
 
@@ -146,9 +146,6 @@ echo "${DOMAIN}" > /etc/letsencrypt/san_list
 EOF
 
 chmod +x /etc/periodic/monthly/reissue
-
-echo '* * * * * root echo "Hello world" >> /var/log/cron.log 2>&1' >> /etc/cron.d/hello-cron
-touch /var/log/cron.log
 
 # Kick off cron to reissue certificates as required
 # Background the process and log to stderr
